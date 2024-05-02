@@ -2,36 +2,55 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { BarMenu, Chart } from '../../assets';
-import { Category, Footbar, Gap, Search } from '../../components';
+import { Category, Content, Footbar, Gap, Search } from '../../components';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
         <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}>
-            <ScrollView>
+            <View>
                 <View style={styles.header}>
                     <BarMenu />
                     <View style={styles.title}>
                         <Text style={styles.uk}>UK</Text>
                         <Text style={styles.fd}>FundTrade</Text>
                     </View>
-                    <Chart />
-                </View>
-                <Gap height={30}/>
-                <Search />
-                <Gap height={40} />
-                <View>
-                    <Text style={styles.categoriesText}>Categories</Text>
-                    <Gap height={10} />
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        <Category />
-                        <Category />
-                        <Category />
-                        <Category />
-                    </ScrollView>
-                </View>
-            </ScrollView>
-            <Footbar type='home'/>
+                        <Chart />
+                    </View>
+                <ScrollView style={styles.containerWrapper} showsVerticalScrollIndicator={false}>
+                    <Gap height={30}/>
+                    <Search />
+                    <Gap height={40} />
+                    <View>
+                        <Text style={styles.Text}>Categories</Text>
+                        <Gap height={10} />
+                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                            <Category label='Drinks'/>
+                            <Category label='Snacks'/>
+                            <Category label='Burgers'/>
+                            <Category label='Keripik'/>
+                        </ScrollView>
+                    </View>
+                    <Gap height={26} />
+                    <View>
+                        <Text style={styles.Text}>Content</Text>
+                        <Gap height={10} />
+                        <View style={styles.contentWrapper}>
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                            <Content />
+                        </View>
+                    </View>
+                </ScrollView>
+                <Footbar type='home' navigation={navigation}/>
+            </View>
         </LinearGradient>
     </View>
   );
@@ -46,8 +65,10 @@ const styles = StyleSheet.create({
     lineargradient: {
         flex: 1,
         alignItems: 'center',
-        paddingHorizontal: 10,
         paddingTop: 30,
+    },
+    containerWrapper: {
+        paddingHorizontal: 20,
     },
     title: {
         flexDirection: 'row',
@@ -68,13 +89,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
+        height: 50,
     },
-    categoriesText: {
+    Text: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 22,
         color: '#000000',
     },
     footer: {
         bottom: 0,
+    },
+    contentWrapper: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     }
 });
