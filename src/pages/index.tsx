@@ -4,6 +4,24 @@ import Home from './Home';
 import Discount from './Discount';
 import Favorite from './Favorite';
 import Profile from './Profile';
-import History from './History';
+import History from './History/HIstoryAll';
+import HistoryCash from './History/HistoryCash';
+import HistoryTF from './History/HistoryTF';
+import HistoryCU from './History/HistoryCU';
+import ContentPage from './ContentPage';
+import ChartPage from './Chart';
 
-export {Splash, Login, Home, Discount, Favorite, Profile, History};
+export {
+  Splash,
+  Login,
+  Home,
+  Discount,
+  Favorite,
+  Profile,
+  History,
+  HistoryCash,
+  HistoryTF,
+  HistoryCU,
+  ContentPage,
+  ChartPage,
+};

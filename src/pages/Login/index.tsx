@@ -5,12 +5,34 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Mail, Password} from '../../assets';
 import {Button} from '../../components';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import {showMessage} from 'react-native-flash-message';
 
 const Login = ({navigation}) => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const onSubmit = () => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        // Signed in
+        const user = userCredential.user;
+        navigation.navigate('Home', {uid: user.uid});
+      })
+      .catch(error => {
+        const errorMessage = error.message;
+        showMessage({
+          message: errorMessage,
+          type: 'danger',
+        });
+      });
+  };
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -19,19 +41,25 @@ const Login = ({navigation}) => {
         <Text style={styles.text}>Log In</Text>
         <View style={styles.input}>
           <Mail style={styles.icon} />
-          <TextInput placeholder="Your Email" keyboardType="email-address" />
+          <TextInput
+            placeholder="Your Email"
+            keyboardType="email-address"
+            value={email}
+            onChangeText={value => setEmail(value)}
+          />
         </View>
         <View style={styles.input}>
           <Password style={styles.icon} />
-          <TextInput placeholder="Password" secureTextEntry={true} />
+          <TextInput
+            placeholder="Password"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={value => setPassword(value)}
+          />
         </View>
-        <Button label="Log In" onPress={() => navigation.navigate('Home')} />
+        <Button label="Log In" onPress={onSubmit} />
         <Text>Or</Text>
-        <Button
-          label="Log in With Google"
-          type="google"
-          onPress={() => navigation.navigate('Home')}
-        />
+        <Button label="Log in With Google" type="google" onPress={onSubmit} />
       </LinearGradient>
     </View>
   );

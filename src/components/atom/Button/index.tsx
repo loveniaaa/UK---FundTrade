@@ -1,9 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
-import { Google } from '../../../assets';
+import { BackButton, Google, Poster } from '../../../assets';
 
 
-const Button = ({label, type, onPress}) => {
+const Button = ({label, type, onPress, icon}) => {
     if (type === 'google') {
         return (
             <View>
@@ -12,6 +12,22 @@ const Button = ({label, type, onPress}) => {
                 </TouchableOpacity>
             </View>
         );
+    }
+
+    if (type === 'icon-only') {
+        return (
+            <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+                {icon === 'icon-back' && <BackButton />}
+            </TouchableOpacity>
+        );
+    }
+
+    if (type === 'title') {
+        return (
+            <TouchableOpacity style={styles.buttonTitle} onPress={onPress} activeOpacity={0.8}>
+                <View style={styles.inside}><Image source={Poster} style={styles.image}/><Text style={styles.buttonTextTitle}>{label}</Text></View>
+            </TouchableOpacity>
+        )
     }
 
   return (
@@ -42,11 +58,32 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 20,
     },
+    buttonTextTitle: {
+        color: '#000000',
+        fontSize: 16,
+        fontFamily: 'Montserrat-SemiBold',
+    },
     inside: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     icon: {
+        marginRight: 10,
+    },
+    buttonTitle: {
+        width: 350,
+        height: 43,
+        borderRadius: 30,
+        backgroundColor: '#D1B4EE',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        paddingHorizontal: 15,
+        marginVertical: 14,
+    },
+    image: {
+        width: 30,
+        height: 30,
+        borderRadius: 30,
         marginRight: 10,
     }
 })

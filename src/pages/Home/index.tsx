@@ -36,7 +36,7 @@ const Home = ({navigation}) => {
                         <Text style={styles.Text}>Content</Text>
                         <Gap height={10} />
                         <View style={styles.contentWrapper}>
-                            <Content />
+                            <Content onPress={() => navigation.navigate('ContentPage')}/>
                             <Content />
                             <Content />
                             <Content />

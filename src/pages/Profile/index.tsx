@@ -1,12 +1,41 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image} from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import { Footbar } from '../../components'
+import { Footbar, Gap, HeaderPage } from '../../components'
+import { ProfilePicture } from '../../assets'
 
 const Profile = ({navigation}) => {
   return (
     <View style={styles.container}>
-        <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}></LinearGradient>
+        <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}>
+          <HeaderPage label="Profile" />
+          <Gap height={150} />
+          <View style={styles.containerWrappOut}>
+            <View style={styles.containerWrappIn}>
+              <View>
+                  <Image source={ProfilePicture} style={styles.profile}/>
+              </View>
+              <View style={styles.profileWrapp}>
+                <View style={styles.textProfileWrapp}>
+                  <Text style={styles.textProfile}>Name : </Text>
+                  <Text style={styles.textProfilein}>Mendes, Shawn Peter Raul </Text>
+                </View>
+                <View style={styles.textProfileWrapp}>
+                  <Text style={styles.textProfile}>Email : </Text>
+                  <Text style={styles.textProfilein}>s22080898@student.unklab.ac.id</Text>
+                </View>
+                <View style={styles.textProfileWrapp}>
+                  <Text style={styles.textProfile}>Phone : </Text>
+                  <Text style={styles.textProfilein}>082218181998</Text>
+                </View>
+                <View style={styles.textProfileWrapp}>
+                  <Text style={styles.textProfile}>UKM : </Text>
+                  <Text style={styles.textProfilein}>The Unklab Choir</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </LinearGradient>
         <Footbar type='profile' navigation={navigation}/>
     </View>
   )
@@ -20,8 +49,56 @@ const styles = StyleSheet.create({
     },
     lineargradient: {
         flex: 1,
-        alignItems: 'center',
-        paddingHorizontal: 10,
-        paddingTop: 30,
     },
+    containerWrappOut: {
+      alignItems: 'center',
+    },
+    containerWrappIn: {
+      width: 500,
+      height: 600,
+      backgroundColor: '#5E2590',
+      borderTopLeftRadius: 250,
+      borderTopRightRadius: 250,
+      alignItems: 'center',
+      position: 'absolute',
+    },
+    profile: {
+      width: 150,
+      height: 150,
+      borderRadius: 150,
+      backgroundColor: '#ffffff',
+      marginTop: -70,
+    },
+    profileWrapp: {
+      width: 340,
+      height: 400,
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      marginTop: 50,
+      padding: 10,
+      borderRadius: 10,
+      shadowColor: "#000",
+      shadowOffset: {
+	      width: 0,
+	      height: 12,
+      },
+      shadowOpacity: 0.58,
+      shadowRadius: 16.00,
+
+      elevation: 24,
+    },
+    textProfile: {
+      color: '#000000',
+      fontSize: 22,
+      fontFamily: 'Montserrat-SemiBold'
+    },
+    textProfilein: {
+      color: '#000000',
+      fontSize: 16,
+      fontFamily: 'Montserrat-SemiBold'
+    },
+    textProfileWrapp: {
+      borderBottomWidth: 1,
+      marginBottom: 10,
+      paddingVertical: 5,
+    }
 })
