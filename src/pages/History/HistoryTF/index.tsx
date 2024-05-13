@@ -2,8 +2,17 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Category, Content, Footbar, Gap, HeaderPage } from '../../../components'
 import LinearGradient from 'react-native-linear-gradient'
+import { getDatabase, ref, onValue } from "firebase/database";
 
-const HistoryTF = ({navigation}) => {
+const HistoryTF = ({navigation, user, route}) => {
+  const { uid } = route.params;
+  const db = getDatabase();
+  
+  const starCountRef = ref(db, `users/${uid}`);
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    updateStarCount(postElement, data);
+  });
   return (
     <View style={styles.container}>
       <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}>
@@ -26,7 +35,7 @@ const HistoryTF = ({navigation}) => {
           </View>
         </ScrollView>
       </LinearGradient>
-      <Footbar type='history' navigation={navigation} />
+      <Footbar type='history' navigation={navigation}/>
     </View>
   )
 }

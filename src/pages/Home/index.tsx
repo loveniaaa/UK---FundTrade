@@ -1,10 +1,10 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, Touchable, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { BarMenu, Chart } from '../../assets';
 import { Category, Content, Footbar, Gap, Search } from '../../components';
 
-const Home = ({navigation}) => {
+const Home = ({navigation, route}) => {
   return (
     <View style={styles.container}>
         <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}>
@@ -15,7 +15,7 @@ const Home = ({navigation}) => {
                         <Text style={styles.uk}>UK</Text>
                         <Text style={styles.fd}>FundTrade</Text>
                     </View>
-                        <Chart />
+                        <TouchableOpacity onPress={() => navigation.navigate('ChartPage')} activeOpacity={0.8}><Chart /></TouchableOpacity>
                     </View>
                 <ScrollView style={styles.containerWrapper} showsVerticalScrollIndicator={false}>
                     <Gap height={30}/>

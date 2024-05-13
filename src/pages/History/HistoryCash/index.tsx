@@ -26,7 +26,7 @@ const HistoryCash = ({navigation}) => {
           </View>
         </ScrollView>
       </LinearGradient>
-      <Footbar type='history' navigation={navigation} />
+      <Footbar type='history' navigation={navigation}/>
     </View>
   )
 }

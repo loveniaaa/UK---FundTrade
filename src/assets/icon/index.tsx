@@ -22,6 +22,9 @@ import Chart1 from './chart1.svg';
 import ClockIcon from './Clock.svg';
 import CountMin from './Count-.svg';
 import CountAdd from './Count+.svg';
+import Profile from './profile.svg';
+import Telepon from './Telepon.svg';
+import Organization from './Organisation.svg';
 
 export {
   Logo,
@@ -48,4 +51,7 @@ export {
   ClockIcon,
   CountAdd,
   CountMin,
+  Profile,
+  Telepon,
+  Organization,
 };

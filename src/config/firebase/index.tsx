@@ -13,7 +13,8 @@ const firebaseConfig = {
   storageBucket: "uk-fundtrade.appspot.com",
   messagingSenderId: "764739660302",
   appId: "1:764739660302:web:961b2515f0cc352311ea5f",
-  measurementId: "G-CCLXHDYJ5X"
+  measurementId: "G-CCLXHDYJ5X",
+  databaseURL: 'https://uk-fundtrade-default-rtdb.firebaseio.com/',
 };
 
 // Initialize Firebase

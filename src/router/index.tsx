@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Home, Login, Splash, Discount, Favorite, Profile, History, HistoryCash, HistoryTF, HistoryCU, ContentPage} from '../pages';
+import {Home, Login, Splash, Discount, Favorite, Profile, History, HistoryCash, HistoryTF, HistoryCU, ContentPage, ChartPage, SignUp, Checkout} from '../pages';
 
 
 const Stack = createNativeStackNavigator();
@@ -112,6 +112,36 @@ const Router = () => {
       <Stack.Screen
         name="ContentPage"
         component={ContentPage}
+        options={{
+          headerShown: false,
+          presentation: 'modal',
+          animation: 'fade',
+          animationTypeForReplace: 'push'
+        }}
+      />
+      <Stack.Screen
+        name="ChartPage"
+        component={ChartPage}
+        options={{
+          headerShown: false,
+          presentation: 'modal',
+          animation: 'fade',
+          animationTypeForReplace: 'push'
+        }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{
+          headerShown: false,
+          presentation: 'modal',
+          animation: 'fade',
+          animationTypeForReplace: 'push'
+        }}
+      />
+      <Stack.Screen
+        name="Checkout"
+        component={Checkout}
         options={{
           headerShown: false,
           presentation: 'modal',

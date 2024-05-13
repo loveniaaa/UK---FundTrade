@@ -8,19 +8,18 @@ import {
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Mail, Password} from '../../assets';
-import {Button} from '../../components';
+import {Button, Gap} from '../../components';
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import {showMessage} from 'react-native-flash-message';
 
 const Login = ({navigation}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const onSubmit = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
-        // Signed in
         const user = userCredential.user;
         navigation.navigate('Home', {uid: user.uid});
       })
@@ -59,7 +58,9 @@ const Login = ({navigation}) => {
         </View>
         <Button label="Log In" onPress={onSubmit} />
         <Text>Or</Text>
-        <Button label="Log in With Google" type="google" onPress={onSubmit} />
+        <Button label="Log in With Google" type="google" onPress={() => navigation.navigate('Home')} />
+        <Gap height={10} />
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')} activeOpacity={0.8}><Text>Don't have account? Sign Up here</Text></TouchableOpacity>
       </LinearGradient>
     </View>
   );

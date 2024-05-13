@@ -3,7 +3,7 @@ import React from 'react'
 import { Category, Content, Footbar, Gap, HeaderPage } from '../../../components'
 import LinearGradient from 'react-native-linear-gradient'
 
-const HistoryCU = ({navigation}) => {
+const HistoryCU = ({navigation, user, route}) => {
   return (
     <View style={styles.container}>
       <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}>
@@ -26,7 +26,7 @@ const HistoryCU = ({navigation}) => {
           </View>
         </ScrollView>
       </LinearGradient>
-      <Footbar type='history' navigation={navigation} />
+      <Footbar type='history' navigation={navigation}/>
     </View>
   )
 }

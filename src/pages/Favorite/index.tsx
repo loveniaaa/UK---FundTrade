@@ -3,7 +3,7 @@ import React from 'react'
 import { Content, Footbar, HeaderPage } from '../../components'
 import LinearGradient from 'react-native-linear-gradient'
 
-const Favorite = ({navigation}) => {
+const Favorite = ({navigation, user}) => {
   return (
     <View style={styles.container}>
         <LinearGradient colors={['#E5D5FF', '#481B6B']} style={styles.lineargradient}>
@@ -21,7 +21,7 @@ const Favorite = ({navigation}) => {
             </View>
           </ScrollView>
         </LinearGradient>
-        <Footbar type='favorite' navigation={navigation}/>
+        <Footbar type='favorite' navigation={navigation} user={user}/>
     </View>
   )
 }

@@ -10,6 +10,8 @@ import HistoryTF from './History/HistoryTF';
 import HistoryCU from './History/HistoryCU';
 import ContentPage from './ContentPage';
 import ChartPage from './Chart';
+import SignUp from './SignUp';
+import Checkout from './Checkout';
 
 export {
   Splash,
@@ -24,4 +26,6 @@ export {
   HistoryCU,
   ContentPage,
   ChartPage,
+  SignUp,
+  Checkout,
 };

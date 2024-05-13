@@ -60,7 +60,7 @@ const ContentPage = ({navigation}) => {
           </ScrollView>
         </View>
       </LinearGradient>
-      <Footbar type='content1'/>
+      <Footbar type='content1' navigation={navigation}/>
     </View>
   )
 }
